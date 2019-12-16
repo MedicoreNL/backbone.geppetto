@@ -251,13 +251,14 @@
                 throw "Command must be constructable";
             }
 
-            this.vent.listenTo(this.vent, eventName, function(eventData) {
+            this.vent.listenTo(this.vent, eventName, function(eventData, options) {
 
-                var commandInstance = new CommandConstructor(context, eventName, eventData);
+                var commandInstance = new CommandConstructor(context, eventName, eventData, options);
 
                 commandInstance.context = context;
                 commandInstance.eventName = eventName;
                 commandInstance.eventData = eventData;
+                commandInstance.eventOptions = options;
                 context.resolve(commandInstance, wiring);
                 if (_.isFunction(commandInstance.execute)) {
                     commandInstance.execute();
