@@ -209,37 +209,37 @@
             return target.listenToOnce(this.vent, eventName, callback, target);
         },
 
-        dispatch: function dispatch(eventName, eventData) {
+        dispatch: function dispatch(eventName, eventData, options) {
             if (!_.isUndefined(eventData) && !_.isObject(eventData)) {
                 throw "Event payload must be an object";
             }
             eventData = eventData || {};
             eventData.eventName = eventName;
-            this.vent.trigger(eventName, eventData);
+            this.vent.trigger(eventName, eventData, options);
         },
 
-        dispatchToParent: function dispatchToParent(eventName, eventData) {
+        dispatchToParent: function dispatchToParent(eventName, eventData, options) {
             if (this.parentContext) {
-                this.parentContext.vent.trigger(eventName, eventData);
+                this.parentContext.vent.trigger(eventName, eventData, options);
             }
         },
 
-        dispatchToParents: function dispatchToParents(eventName, eventData) {
+        dispatchToParents: function dispatchToParents(eventName, eventData, options) {
             if (this.parentContext && !(eventData && eventData.propagationDisabled)) {
-                this.parentContext.vent.trigger(eventName, eventData);
+                this.parentContext.vent.trigger(eventName, eventData, options);
                 if (this.parentContext) {
-                    this.parentContext.dispatchToParents(eventName, eventData);
+                    this.parentContext.dispatchToParents(eventName, eventData, options);
                 }
             }
         },
 
-        dispatchGlobally: function dispatchGlobally(eventName, eventData) {
+        dispatchGlobally: function dispatchGlobally(eventName, eventData, options) {
 
             _.each(contexts, function(context) {
                 if (!context) {
                     return true;
                 }
-                context.vent.trigger(eventName, eventData);
+                context.vent.trigger(eventName, eventData, options);
             });
         },
 
