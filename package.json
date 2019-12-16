@@ -56,7 +56,7 @@
     "backbone": "~1.1.0",
     "underscore": "^1.6.0"
   },
-  "contributors":[
+  "contributors": [
     "geekdave (https://github.com/geekdave)",
     "creynders (https://github.com/creynders)",
     "mtsr (https://github.com/mtsr)",
