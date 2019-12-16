@@ -330,7 +330,7 @@
         },
 
         hasWiring: function(key) {
-            return this._mappings.hasOwnProperty(key) || ( !! this.parentContext && this.parentContext.hasWiring(key));
+            return this._mappings.hasOwnProperty(key) || (!!this.parentContext && this.parentContext.hasWiring(key));
         },
 
         getObject: function(key) {
